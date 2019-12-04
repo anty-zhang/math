@@ -46,8 +46,6 @@ ex1: 将一枚硬币连续抛两次，H: 正面; T: 反面那么 $\Omega = \{HH,
 
 ex2: 连续向一个目标射击，直到命中。 $\omega_i$ 表示前i-1次未命中，而第i 次命中，i=1,2,3,..., 那么 $\Omega = \{\omega_1, \omega_2, \omega_3, \ldots \}$
 
-
-
 #### 集合论的方式表示随机事件
 
 - 随机事件之间的关系和运算和集合论之间的关系和运算是一一对应的，这样就可以用集合论的方式来处理随机事件的关系和运算。虽然是按着集合论的方式去表达，但需要按着概率的方式去理解。
@@ -64,19 +62,17 @@ ex2: 连续向一个目标射击，直到命中。 $\omega_i$ 表示前i-1次未
   > 
   > 和关系(和事件): $A \bigcup B = C$  或者 $\overbrace{\bigcup_{k=1}}^n A_k$
   > 交关系(积事件): $A \bigcap B = AB $ 或者 $\overbrace{\bigcap_{k=1}}^n A_k$
-  > $A_1, A_2, \ldots A_n$ 称为完备事件组: 满足条件$$
-\left\{
-  \begin{array}{lr}
-    A_1 \bigcup A_2 \bigcup \ldots \bigcup A_n = \Omega\\
-    A_i \bigcap A_j = \emptyset & i \neq j
-  \end{array}
-\right.
-$$
- > 对立事件: $A - B = \emptyset$  且 $A \bigcup B = \Omega$， 那么A，B称为对立事件
- > 差关系:  
-
-
-
-
+  > $A_1, A_2, \ldots A_n$ 称为完备事件组: 满足条件
+  > 
+  > $\left\{
+  > \begin{array}{lr}
+  >   A_1 \bigcup A_2 \bigcup \ldots \bigcup A_n = \Omega\\
+  >   A_i \bigcap A_j = \emptyset & i \neq j
+  > \end{array}
+  > \right.$
+  > 
+  > 
+  > 对立事件: $AB = \emptyset$  且 $A \bigcup B = \Omega$， 那么A，B称为对立事件
+  > 差关系:  
 
 
