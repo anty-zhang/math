@@ -63,6 +63,17 @@ ex2: 连续向一个目标射击，直到命中。 $\omega_i$ 表示前i-1次未
 - > 包含关系(包含事件):  $A \subset B$
   > 
   > 和关系(和事件): $A \bigcup B = C$  或者 $\overbrace{\bigcup_{k=1}}^n A_k$
+  > 交关系(积事件): $A \bigcap B = AB $ 或者 $\overbrace{\bigcap_{k=1}}^n A_k$
+  > $A_1, A_2, \ldots A_n$ 称为完备事件组: 满足条件$$
+\left\{
+  \begin{array}{lr}
+    A_1 \bigcup A_2 \bigcup \ldots \bigcup A_n = \Omega\\
+    A_i \bigcap A_j = \emptyset & i \neq j
+  \end{array}
+\right.
+$$
+ > 对立事件: $A - B = \emptyset$  且 $A \bigcup B = \Omega$， 那么A，B称为对立事件
+ > 差关系:  
 
 
 
