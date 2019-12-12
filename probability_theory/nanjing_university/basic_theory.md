@@ -463,8 +463,6 @@ $e^x = \sum_{k=0}^{\infty} \frac {x ^k} {k!} = 1$
   > 
   > $P\{x_1 < Z \leq x_2\} = P(Z \leq x_2) - P( Z \leq x_1)$
   > 
-  > 
-  > 
   > 分布函数的间断点至多可数
   > 
   > 任何随机变量都有分布函数
@@ -524,7 +522,298 @@ $e^x = \sum_{k=0}^{\infty} \frac {x ^k} {k!} = 1$
 
 ### 连续型随机变量
 
+#### 定义
+
+> 设随机变量Z的分布函数为F(x),如果存在<font color=red>非负函数</font>f(x), 使得$F(x) = \int_{-\infty}^x f(t)dt$ ,则称Z为连续型随机变量, f(x)成为Z的概率密度函数
+> 
+> 约定：提到概率分布时，离散型<->分布律; 连续型 <->概率密度
+
+#### 性质
+
+- $f(x) \ge 0, -\infty < x < +\infty$
+
+- $\int_{-\infty}^{+\infty}f(x) dx = 1$
+
+- 对$\forall x_1 \le x_2, P\{x_1 < z \le x_2\} = F(x_2) - F(x_1) = \int_{x_1}^{x_2}f(x)dx$
+
+- 改变f(x)个别点处的函数值不影响F(x) ==> 连续型随机变量的分布函数是连续的
+
+- 对 $\forall x, P\{Z=x\} = \int_{x}^{x}f(x)dx = 0$
+
+- 若f(x)在x点连续，则 $F'(X) = f(x)$
+
+#### 均匀分布
+
+- 概率密度函数
+
+$p(x) = \left \{ \begin{array}{l}
+\frac {1} {b-a} &\text {if } a < x< b \\
+0 &\text {if } others
+\end{array} \right.$
+
+记 $Z \sim \bigcup(a,b)$
+
+- 分布函数
+
+$F(x) = \int_{-\infty}^x = \left \{ \begin{array}{l}
+\int_{-\infty}^xf(t)dt = 0 & \text {if } x < a \\
+\int_{-\infty}^{a} f(t)dt + \int_{a}^{x} \frac {1} {b-a} dt = \frac {x-a} {b-a} & \text {if } a \le x < b \\
+\int_{-\infty}^{a} f(t)dt + \int_{a}^{b} \frac {1} {b-1}dt + \int_{b}^{x}f(t)dt = 0 + 1 + 0 = 1 & \text {if } x \ge b
+\end{array} \right.$
+
+#### 指数分布
+
+- 概率密度函数
+
+$p(x) = \left\{ \begin{array}{l}
+\lambda {e^{ - \lambda x}}dx &\text {if } x > 0 \\
+0 & \text {if } x <  = 0
+\end{array} \right.$
+
+记Z服从参数$\lambda (\lambda > 0)$ 的指数分布
+
+- 分布函数
+
+$F(x) = \left\{ \begin{array}{l}
+\int_{-\infty}^a f(t)dt = 0 & \text {if } x < 0 \\
+\int_{-\infty}^0 f(t)dt + \int_{0}^{x} \lambda e^{-\lambda t}dt =0 + -e^{-\lambda t} |_{0}^{x} = 1-e^{\lambda x} & \text {if } x \ge 0
+\end{array} \right.$
+
+- 性质(无记忆性)
+
+对$\begin{array}{l}
+\forall s,t > 0\\
+P\{ Z > s + t|Z > s\} \\
+ = \frac{{P\{ Z > s + t \cap Z > s\} }}{{P\{ Z > s\} }}\\
+ = \frac{{P\{ Z > s + t\} }}{{P\{ Z > s\} }}\\
+ = \frac{{1 - P\{ Z \le s + t\} }}{{1 - P\{ Z \le s\} }}\\
+ = \frac{{1 - F(s + t)}}{{1 - F(s)}}\\
+ = \frac{{1 - (1 - {e^{ - \lambda (s + t)}})}}{{1 - (1 - {e^{ - \lambda (s)}})}}\\
+ = {e^{ - \lambda t}} = P\{ Z > t\} 
+\end{array}$
+
+（1）s+t发生的概率和s发生的概率没有关系
+
+（2）<font color=red>指数分布式是唯一一个连续型无记忆分布的概率分布</font>
+
+- 使用
+  
+  > 寿命分布
+  > 
+  > 可靠性理论
+
+#### 正太分布
+
+- 概率密度
+
+$p(x) = \frac{1}{{\sqrt {2\pi } \sigma }}{e^{ - \frac{{{{(x - u)}^2}}}{{2{\sigma ^2}}}}} , -\infty < x < +\infty$
+
+其中 $\sigma >0$，称为Z服从参数为 $u, \sigma$ 的正太分布，又称为高斯分布，记为 $Z \sim N(u, \sigma^2)$
+
+- 性质
+  
+  > （1）关于x=u对称，并且取到最大值$f(u)=\frac {1} {\sqrt{2\pi} \sigma}$，即为x=u附近可能会取到概率只最大
+  > 
+  > （2）拐点 $x= u\pm \sigma$
+  > 
+  > （3）分布函数 $F(x) = \int_{-\infty}^x \frac {1} {2\pi\sigma} e^{- \frac {(t-u)^2} {2 \sigma^2}} dt$
+  > 
+  > （4）标准正太分布：$u=0, \sigma=1$
+  > 
+  > 概率密度：$\varphi (x) = \frac{1}{{\sqrt {2\pi } }}{e^{ - \frac{{{x^2}}}{2}}}$
+  > 
+  > 分布函数：$\Phi(x) = \int_{-\infty}^x \frac {1} {\sqrt{2\pi}} e^{- \frac {x^2} {2}}dx$
+  > 
+  > 对称性：$\Phi(-x) = 1- \Phi(x)$
+  > 
+  > $\sigma$ 法则：$P\{u-\sigma < Z < u+ \sigma\} = P\{-1 < \frac {Z-u} {\sigma} < 1\} = \Phi(1) - \Phi(-1)=2\Phi(1) -1=68.26\%$
+  > 
+  > $P{u-2\sigma < Z < u+ 2\sigma} = P{-1 < \frac {Z-u} {2\sigma} < 1} = \Phi(2) - \Phi(-2)=2\Phi(2) -1=95.94\%$
+  > $P{u-3\sigma < Z < u+ 3\sigma} = P{-1 < \frac {Z-u} {3\sigma} < 1} = \Phi(3) - \Phi(-3)=2\Phi(3) -1=99.74\%$
+  > 
+  > （5）正太分布和标准正太分布转换
+  > 
+  > $\begin{array}{l}
+  > let \quad X \sim N(u,{\sigma ^2}),Z = \frac{{X - u}}{\sigma }\\
+  > P\{ Z \le x\}  = P\{ \frac{{X - u}}{\sigma } \le x\} \\
+  >  = P\{ X \le \sigma x + u\} \\
+  >  = \frac{1}{{\sqrt {2\pi } \sigma }}\int_{ - \infty }^{\sigma x + u} {{e^{ - \frac{{{{(t - u)}^2}}}{{2{\sigma ^2}}}}}} dt\\
+  > let \quad \frac{{t - u}}{\sigma } = s,dt = \sigma ds\\
+  >  = \frac{1}{{\sqrt {2\pi } }}\int_{ - \infty }^x {{e^{ - \frac{{{{(s)}^2}}}{2}}}} ds = \Phi(x)
+  > \end{array}$
+
+## 随机变量的函数的分布
+
+- 概率密度变换公式
+
+设Z的概率密度为$p(x), x \in (a,b), y=f(x)$ 在(a,b)严格单调连续，且存在唯一的反函数x=h(y), $y\in (\alpha, \beta), h'(y)$ 连续，则y=f(z)也是连续型随机变量，其密度函数为：
+
+$p(y) = p(h(y))|h'(y)|, y\in(\alpha, \beta)$
+
+- ex1 离散型
+  
+  > | Z   | -2  | 0   | 1   | 2   |
+  > | --- | --- | --- | --- | --- |
+  > | P   | 0.1 | 0.2 | 0.3 | 0.4 |
+  > 
+  > 求Y=f(Z)=z^2+1的分布
+  > 
+  > | Y   | 5   | 0   | 2   | 5   |
+  > | --- | --- | --- | --- | --- |
+  > | P   | 0.1 | 0.2 | 0.3 | 0.4 |
+  > 
+  > 因此，
+  > 
+  > | Y   | 0   | 2   | 5   |
+  > | --- | --- | --- | --- |
+  > | P   | 0.2 | 0.3 | 0.5 |
+
+- ex2 连续型
+  
+  > 设$\xi$ 的的概率密度为 $f(x) = \left \{\begin{array}{l} 2x & \text {if 0 < x < 1} \\
+  > 0 & \text {if } others \end{array} \right.$
+  > 
+  > 求 $\eta = f(\xi) = 3\xi +1$的分布函数和概率密度
+  > 
+  > 分析：（1）求 $\eta$ 的分布函数 G(y)
+  > 
+  > $\begin{array}{l}
+  > G(y) = P\{ \eta  \le y\}  = P\{ 3\xi  + 1 \le y\}  = P\{ \xi  \le \frac{{y - 1}}{3}\} \\
+  >  = \left\{ \begin{array}{l}
+  > 0 & \text {if } x \le 0\\
+  > \int_0^{\frac{{y - 1}}{3}} {2xdx = \frac{{{{(y - 1)}^2}}}{3}  \quad\quad \text {if }1 < y < 4(0 < \frac{{y - 1}}{3} < 1)} \\
+  > 1 & {if } y \ge 4(\frac{{y - 1}}{3} \ge 1)
+  > \end{array} \right.
+  > \end{array}$
+  > 
+  > （2）求密度函数
+  > 
+  > $g(y) = G'(y) = \left \{ \begin{array}{l} \frac {2} {9} (y-1) & {if } \quad 1 < y <4 \\
+  > 0 & {if } \quad others
+  >  \end{array} \right.$
+
 # 二维随机变量及其分布
+
+## 二维随机变量的概念
+
+### 研究的主要问题
+
+- 整体的分布和性质
+
+- 分量之间的关系
+
+- 分量和整体之间的关系
+
+### 二维随机变量的分布函数
+
+- 含义
+
+设(x,y)是二维平面上的点，对 $\forall x,y$, 称二元函数 $F(x) = P \{X \le x, Y \le y \}$ (逗号表示交集)为(X,Y)的联合分布函数
+
+- 性质
+
+（1）单调性(多个变量不存在单调性，只是对单个变量而言)：F(x,y)对x(或者y)是单调非递减的
+
+（2）概率
+
+$0 \le F(x,y) \le 1$
+
+$F(-\infty, y) = 0$
+
+$F(x, -\infty) = 0$
+
+$F(-\infty, \infty) = 0$
+
+$F(+\infty, +\infty) = 1$
+
+（3）连续型: 对x或者y都是右连续的
+
+$F(x+0, y) = F(x,y)$
+
+$F(X, y+0) = F(x,y)$
+
+（4）矩形区域概率
+
+$\begin{array}{l}
+P\{x_1 < X \le x_2, y_1 < Y \le y_2 \} \\
+= F(x_2, y_2) - F(x_1, y_2) - F(x_2, y_1) + F(x_1, y_1)
+\end{array}$
+
+### 二维离散型
+
+- 含义
+
+(X,Y)的取值为$(x_i,y_j), i,j=1,2,3,\ldots$ 若为有限多对或者可列无限多对(自然数范围内)
+
+- 联合分布律--> 二维的表格表示
+
+（1）$P \{X=x_i, Y=y_i \} = P_{ij} > 0$
+
+（2）$\sum_{i=1}^n\sum_{j=1}^n p(x_i,y_j) = 1$
+
+### 二维连续型
+
+- 含义
+
+设(X,Y)的联合分布函数为F(x,y), 如果存在非负函数f(x,y), 对
+
+ $\forall x,y 有 F(x,y) = \sum_{-\infty}^x\sum_{-\infty}^y f(x,y)dxdy$
+
+则称(X,Y)为二维连续型随机变量，f(x,y)成为二维联合概率密度函数
+
+- 性质
+
+（1）$p(x,y) \ge 0$ 
+
+（2）$\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty}f(x,y)dxdy = 1$
+
+（3）点(X,Y)落在某平面区域D上的概率为
+
+$P\{(X,Y) \in D\} = \iint_Df(x,y)dxdy$
+
+（4）若f(x,y)在点(x,y)连续，则
+
+$\frac {\partial^2F(x,y)} {\partial x\partial y} = f(x,y)$
+
+
+
+## 边缘分布
+
+### 边缘分布函数
+
+令(X,Y)的联合分布函数为F(x,y), 那么X的边缘分布函数为
+
+$F_X(x) = F(x, +\infty) = P\{X \le x \} = P\{X \le x, Y < +\infty \}$
+
+$F_Y(y) = F(+\infty, y) = P \{ Y \le y\} = P \{X < +\infty, Y < y\}$
+
+<font color=red>注意：联合概率分布决定了边缘分布，但反之不一定 </font>
+
+
+
+### 离散型边缘分布
+
+|       | $a_1$       | ... | $a_i$      | ... | sum         |
+| ----- | ----------- | --- | ---------- | --- | ----------- |
+| $b_1$ | $p_{11}$    |     | $p_{i1}$   |     | $p \cdot 1$ |
+| ...   |             |     |            |     |             |
+| $b_j$ | $p_{1j}$    |     | $p_{ij}$   |     | $p \cdot j$ |
+| ...   |             |     |            |     |             |
+| sum   | $p_1 \cdot$ |     | $p_i\cdot$ |     |             |
+
+
+
+### 连续型边缘分布
+
+
+
+
+
+## 条件分布
+
+## 独立性
+
+## 两个随机变量的函数分布
 
 # 随机变量的数字特征
 
