@@ -775,8 +775,6 @@ $P\{(X,Y) \in D\} = \iint_Df(x,y)dxdy$
 
 $\frac {\partial^2F(x,y)} {\partial x\partial y} = f(x,y)$
 
-
-
 ## 边缘分布
 
 ### 边缘分布函数
@@ -787,29 +785,157 @@ $F_X(x) = F(x, +\infty) = P\{X \le x \} = P\{X \le x, Y < +\infty \}$
 
 $F_Y(y) = F(+\infty, y) = P \{ Y \le y\} = P \{X < +\infty, Y < y\}$
 
-<font color=red>注意：联合概率分布决定了边缘分布，但反之不一定 </font>
+<font color=red>超几何分布的边缘分布未必是超几何分布</font>
 
+<font color=red>二项分布的边缘分布是二项分布</font>
 
+<font color=red>正态分布的边缘分布仍是正态分布</font>
+
+<font color=red>注意：联合概率分布决定了边缘分布，但反之不一定 </font>   例如
+
+> 袋子中有2只白球，3只黑球，现在一只一只摸出
+> 
+> $X= \left \{ \begin{array}{l} 0 & 第一次黑球 \\
+> 1 & 第一次白球 \end{array} \right.$
+> 
+> $Y= \left \{ \begin{array}{l} 0 & 第二次黑球 \\
+> 1 & 第二次白球 \end{array} \right.$
+> 
+> （1）有放回
+> 
+> | Y\X           | 0          | 1        | $p_{\cdot j}$ |
+> | ------------- | ---------- | -------- | ------------- |
+> | 0             | $3/5* 3/5$ | 2/5 *3/5 | 3/5           |
+> | 1             | $3/5*2/5$  | 2/5*2/5  | 2/5           |
+> | $p_{i \cdot}$ | 3/5        | 2/5      | 1             |
+> 
+> （2）无放回
+> 
+> | Y\X           | 0          | 1        | $p_{\cdot j}$ |
+> | ------------- | ---------- | -------- | ------------- |
+> | 0             | $3/5* 2/4$ | 3/5 *2/4 | 3/5           |
+> | 1             | $3/5*2/4$  | 2/5*1/4  | 2/5           |
+> | $p_{i \cdot}$ | 3/5        | 2/5      | 1             |
 
 ### 离散型边缘分布
 
-|       | $a_1$       | ... | $a_i$      | ... | sum         |
-| ----- | ----------- | --- | ---------- | --- | ----------- |
-| $b_1$ | $p_{11}$    |     | $p_{i1}$   |     | $p \cdot 1$ |
-| ...   |             |     |            |     |             |
-| $b_j$ | $p_{1j}$    |     | $p_{ij}$   |     | $p \cdot j$ |
-| ...   |             |     |            |     |             |
-| sum   | $p_1 \cdot$ |     | $p_i\cdot$ |     |             |
-
-
+|              | $a_1$       | ... | $a_i$      | ... | $p_{\cdot j}$ |
+| ------------ | ----------- | --- | ---------- | --- | ------------- |
+| $b_1$        | $p_{11}$    |     | $p_{i1}$   |     | $p \cdot 1$   |
+| ...          |             |     |            |     |               |
+| $b_j$        | $p_{1j}$    |     | $p_{ij}$   |     | $p \cdot j$   |
+| ...          |             |     |            |     |               |
+| $p_{i\cdot}$ | $p_1 \cdot$ |     | $p_i\cdot$ |     | 1             |
 
 ### 连续型边缘分布
 
+设(X,Y)的联合概率密度函数为 f(x,y),那么X的边缘分布函数为
 
+$F_X(x)= F(x, +\infty) = P(X \le x) = \int_{-\infty}^x(\int_{-\infty} ^{+\infty} f(x,y)dy)dx$
 
+X 的边缘概率密度函数为
 
+$f_x(x) = F_X'(x) = \int_{-\infty}^{+\infty}f(x,y)dy$
+
+同理：
+
+$F_Y(y)= F(+\infty, y) = P(Y \le y) = \int_{-\infty}^y(\int_{-\infty} ^{+\infty} f(x,y)dx)dy$
+
+$f_y(y) = F_Y'(y) = \int_{-\infty}^{+\infty}f(x,y)dx$
+
+## 三种常见的二维分布
+
+### 二维两点分布
+
+| Y\X | 0   | 1   |     |
+| --- | --- | --- | --- |
+| 0   | 1-p | 0   | 1-p |
+| 1   | 0   | p   | p   |
+|     | 1-p | p   |     |
+
+(X,Y)的联合分布函数为
+
+（1）当 $ x< 0 || y <0, F(x,y) = P\{ X \le x, Y \le y \} = 0 $
+
+（2）当$0 \le x < 1, y \ge 0$ 时，F(x,y) = 1-p
+
+（3）当$x \ge0, 0 \le y < 1$ 时， F(x,y) = 1-p
+
+（4）当$x \ge 1, y \ge 1$时， F(x,y) = 1
+
+### 二维均匀分布
+
+- 定义
+
+密度函数为(区域面积分之一)
+
+$f(x,y) = \left\{ \begin{array}{l}
+\frac{1}{{{S_D}}} & (x,y) \in D\\
+0 & others
+\end{array} \right. $
+
+- ex1
+
+在[-1, 2]上任取两点，坐标分别为(X,Y)，求$P\{X+Y>1, XY < 1\}$
+
+分析：（1）画出二维坐标图和X,Y代表的区域
+
+（2）$P = \frac {3 * 1/2 + 2 \int_1^2 \frac {1} {x} dx} {9}$
+
+### 二维正态分布
+
+- 密度函数
+
+$\begin{array}{l}
+\varphi (x,y) = \frac{1}{{2\pi {\sigma _1}{\sigma _2}\sqrt {1 - {\rho ^2}} }}\exp \left\{ { - \frac{1}{{2(1 - {\rho ^2})}}(\frac{{{{(x - {u_1})}^2}}}{{{\sigma _1}^2}} - 2\rho \frac{{(x - {u_1})(y - {u_2})}}{{{\sigma _1}{\sigma _2}}} + \frac{{{{(y - {u_2})}^2}}}{{{\sigma _2}^2}})} \right\}\\
+{\sigma _1} > 0,{\sigma _2} > 0, - 1 < \rho  < 1\\
+(X,Y) \sim ({u_1},{\sigma _1};{u_2},{\sigma _2};\rho )
+\end{array}$
+
+- 二维正态分布可以推出边缘分布概率密度函数符合正态分布，反之不能确定
 
 ## 条件分布
+
+在某个分量发生的情况下，另外一个分量发生的情况
+
+- 二维离散型条件分布
+  
+  > 设(X,Y)是二维离散型的分布列： $P\{X=a_i,Y=b_j\} = p_{ij}, \quad i,j=1,2,...$
+  > 
+  > 对$P\{Y=b_j\} > 0$， X的条件概率分布为
+  > 
+  > $P\{X=a_i | Y=b_j\} = \frac {P\{X=a_i,Y=b_j\}} {P\{Y=b_j\}} = \frac {p_{ij}} {p_{\cdot j}}, i,j=1,2,...$
+  > 
+  > 
+  
+  
+
+- 二维连续型条件分布
+  
+  > 设(X,Y)是二维连续型，联合概率密度函数为p(x,y) 注意: $P\{X=x\}=0， P\{Y=y\} = 0$
+  > 
+  > 对固定的y，若$P_Y(y) > 0$
+  > 
+  > $P_{X|Y}(x|y) = \frac {p(x,y)} {p(y)}$ 为在Y=y的条件下的条件密度函数
+  > 
+  > 
+
+- ex
+  
+  > 设(X,Y)的联合密度函数为 $p(x,y) = \left\{ \begin{array}{l}
+  > \frac{1}{y}{e^{ - \frac{x}{y}}}{e^{ - y}} & 0 < x,y <  + \infty \\
+  > 0 & others
+  > \end{array} \right.$ 
+  > 求 $P\{X >1 | Y=y \}$
+  > 
+  > 分析：在$Y=y >0$ 时，X的条件密度函数为
+  
+  > $\begin{array}{l}
+  > p(x|y) = \frac{{p(x,y)}}{{p(y)}}\\
+  >  = \frac{{\frac{1}{y}{e^{ - \frac{x}{3}}}{e^{ - y}}}}{{\frac{1}{y}{e^{ - y}}\int_0^{ + \infty } {{e^{ - \frac{x}{y}}}} }} = \frac{{{e^{ - \frac{x}{y}}}}}{y} \quad x > 0\\
+  > \therefore y > 0\\
+  > P\{ X > 1|Y = y\}  = \int_1^{ + \infty } {\frac{1}{y}{e^{ - \frac{x}{y}}}dx = {e^{ - \frac{1}{y}}}} 
+  > \end{array}$
 
 ## 独立性
 
