@@ -905,10 +905,6 @@ $\begin{array}{l}
   > 对$P\{Y=b_j\} > 0$， X的条件概率分布为
   > 
   > $P\{X=a_i | Y=b_j\} = \frac {P\{X=a_i,Y=b_j\}} {P\{Y=b_j\}} = \frac {p_{ij}} {p_{\cdot j}}, i,j=1,2,...$
-  > 
-  > 
-  
-  
 
 - 二维连续型条件分布
   
@@ -917,8 +913,6 @@ $\begin{array}{l}
   > 对固定的y，若$P_Y(y) > 0$
   > 
   > $P_{X|Y}(x|y) = \frac {p(x,y)} {p(y)}$ 为在Y=y的条件下的条件密度函数
-  > 
-  > 
 
 - ex
   
@@ -937,11 +931,436 @@ $\begin{array}{l}
   > P\{ X > 1|Y = y\}  = \int_1^{ + \infty } {\frac{1}{y}{e^{ - \frac{x}{y}}}dx = {e^{ - \frac{1}{y}}}} 
   > \end{array}$
 
-## 独立性
+## 独立性(分量之间的独立性)
+
+- 定义
+  
+  > 设有(X,Y)，其中F(x,y) 是其联合分布函数，$F_X(x), F_Y(y)$是边际分布函数，对所有的X,Y 有 $F(x,y) = F_X(x) *F_Y(y)$
+  > 
+  > 即$P\{X \le x, Y \le y \} = P\{X \le x \} P\{Y \le y \}$
+  > 
+  > 则X与Y相互独立
+
+- 离散型
+  
+  > $P \{X=a_i,Y=b_j \} = P\{X=a_i\} P\{Y=b_j\}$
+  > 
+  > 即 $p_{ij} = p_{i\cdot} p_{\cdot j}$
+
+- 连续型
+  
+  > 独立性 <==> $P(x,y) = P_X(x)P_Y(y)$
+
+- ex
+  
+  > 设X,Y独立同分布，$p(x) = \left \{ \begin{array}{l} 2x & 0 \le x \le 1 \\
+  > 0 & others \end{array} \right.$
+  > 
+  > 求$P\{ X + Y \le 1\} $
+  > 
+  > 分析：（1）因为独立，所以联合密度函数为
+  > 
+  > $p(x,y) = p(x)p(y) = \left \{ \begin{array}{l} 4xy & 0 \le, x,y \le 1 \\
+  > 0 & others \end{array} \right.$
+  > 
+  > （2）$\begin{array}{l} P\{X+Y \le 1\} =  \iint_{x+y \le 1}p(x,y)dxdy \\
+  > = \int_0^1\int_0^{1-x}4xydxdy \\ 
+  > = 1/6 \end{array}$
+
+- 性质
+  
+  > （1）X与Y独立，那么f(x)与g(y)也相互独立
+  > 
+  > （2）常数C与任一随机变量独立
+  > 
+  > （3）若联合密度函数p(x,y)可以分离成$p(x,y) = g_1(x) g_2(y)$
+  > 
+  > 且g1(x) 的非零区域与y无关；g2(y)的非零区域与x无关，则X与Y相互独立
+  > 
+  > （4）可推导到多维 
 
 ## 两个随机变量的函数分布
 
+- ex1--离散型
+  
+  > 设X，Y独立，且$X \sim P(\lambda_1), Y \sim P(\lambda_2)$ 的泊松分布，求X+Y的分布律
+  > 
+  > 分析：$\begin{array}{l} P\{X+Y=m\} = P\{X=0,Y=m\} + P\{X=1 ,Y=m-1\} + \ldots + P\{X=m, Y=0 \} \\
+  > \sum_{k=0}^mP\{X=k, Y=m-k\} \\
+  > \sum_{k=0}^mP\{X=k\}P\{Y=m-k\} \\
+  > \sum_{k=0}^m \frac {\lambda_1^k} {k!} e^{-\lambda_1} \frac {\lambda_2^{m-k}} {(m-k)!} e^{-\lambda_2} \\
+  > \frac {e^{-\lambda_1 - \lambda_2}} {m!} \sum_{k=0}^m \frac {m!} {k!(m-k)!} \lambda_1^k \lambda_2^{m-k} \\
+  > \frac {(\lambda_1 + \lambda_2)^m} {m!} e^{-\lambda_1 - \lambda_2} , m=1,2,3,\ldots
+  > \end{array}$
+  > 即 $(X+Y) \sim P(\lambda_1 + \lambda_2)$
+  > 
+  > ==> 分布的可加性，（1）两个独立的泊松分布的和，依然是一个柏松分布，而且参数对应相加, （2） <font color=red>正太分布也具有可加性</font>
+  > 
+  > 若X，Y独立，$X \sim N(u_1, \sigma_1^2), Y \sim N(u_2, \sigma_2^2)$ 
+  > 
+  > 那么， $(X+Y) \sim N(u_1+u_2, \sigma_1^2+\sigma_2^2)$
+  > 
+  > （3）二项分布：若X，Y独立，$X \sim B(n_1, p), Y \sim B(n_2, p)$ 那么 (X+Y) \sim B(n_1+n_2, p)
+
+- ex2 -- 最大值、最小值分布
+  
+  > 设X，Y独立，分布函数分为为 $F_X(x), F_Y(y)$ 求 $Z_1 = max(X,Y), Z_x=min(X,Y)$的分布函数
+  > 
+  > 分析：$\begin{array}{l} F_{Z_1}(z) = P\{Z_1 \le z \} = P \{ max(X,Y) \le z \} \\
+  > = P\{X \le z\} P\{ Y \le z\} = F_X(x) F_Y(y) \\
+  > P\{Z_2 \le z \} = P \{ min(X,Y) \le z \} \\
+  > = 1 - P\{ min(X,Y) > z \} = 1 - P \{ X > z, Y > z \} \\
+  > = 1 - P \{ X > z \} P \{ Y > z \} \\
+  > = 1 - [1 - P \{ X \le z \}] [1 - P \{ Y \le z \}] \\
+  > = 1 - [1 - F_X(x)][1 - F_Y(y)]
+  > \end{array}$
+
+- ex3 -- 连续型
+  
+  > 设X，Y的联合密度函数为p(x,y),求Z= X+Y的分布函数
+  > 
+  > 分析：$\begin{array}{l}
+  > {F_Z}(z) = P\{ Z \le z\}  = P\{ X + Y \le z\} \\
+  >  = \int_{ - \infty }^{ + \infty } {(\int_{ - \infty }^{z - y} {p(x,y} )dx)dy} 
+  > \end{array}$
+
 # 随机变量的数字特征
+
+研究目的：即使给出某个随机变量的完整分布，由于分布的复杂性，通常不能很快的看出这个分布的形态，此时需要一个更加简单、明了的方法来方便的判断、解决这个分布的相关问题，而随机变量的数字特征就是为来解决这个问题。
+
+## 数学期望
+
+反应数据的集中程度
+
+### 定义
+
+- 离散型
+  
+  > | X   | $a_1$ | ... | $a_2$ | ... |
+  > | --- | ----- | --- | ----- | --- |
+  > | P   | $p_1$ | ... | $p_2$ | ... |
+  > 
+  > $\frac {p_1a_1+p_2a_2+...+p_na_n} {p_1+p_2+...+p_n} = \sum_{i=1}^np_ia_i$
+  > 
+  > $E(X) = \sum_{i=1}^{+\infty} a_ip_i$ 为X的数学期望(加权平均数)，其中 $\sum_{i=1}^{+\infty}$ 为绝对收敛。 
+
+- 连续型
+  
+  > 设随机变量X的概率密度函数为p(x),那么期望为 $E(X) = \sum_{-\infty} ^ {+ \infty} xp(x)dx$
+  > 
+  > 其中，$\sum_{-\infty}^{+\infty}|xp(x)|dx$  收敛
+
+- 绝对收敛
+  
+  > 设有级数$\sum u_n$
+  > 
+  > 若$\sum|u_n|$ 收敛，则称 $\sum u_n$ 绝对收敛。（无限次数加法满足交换律）
+  > 
+  > 若$\sum u_n$ 收敛，$\sum |u_n|$发散，则称 $\sum u_n$ 条件收敛。（无限次数加法不满足交换律）
+  > 
+  > Riemann TH: 无限级数的加法，绝对收敛的级数可以任意交换次序。
+  > 
+  > 随机实验要求绝对收敛的原因：随机实验的结果是任意次序的，理论上任意次序的相加，其结果也是一样的。
+
+### 三种常见的离散型随机变量的期望
+
+- 两点分布
+  
+  > | X   | 1   | 0   |
+  > | --- | --- | --- |
+  > | P   | p   | 1-p |
+  > 
+  > E(X) = 1*p + 0 *(1-p) = p
+
+- 二项分布
+  （1）利用定义推导
+  
+  > $\begin{array}{l}
+  > X \sim B(n,p) \\
+  > E(X) = \sum_{k=0}^n k C_n^k p^k (1-p)^{n-k} \\
+  > = \sum_{k=1}^n k C_n^k p^k (1-p)^{n-k} \\
+  > = \sum_{k=1}^n k \frac {n!} {k! (n-k)!} p^k (1-p)^{n-k} \\
+  > = \sum_{k=1}^n \frac {n!} {(k-1)! (n-k)!} p^k (1-p)^{n-k} \\
+  > = np \sum_{k=1}^n \frac {(n-1)!} {(k-1)! (n-1-(k-1))!} p^{k-1} (1-p)^{n-k} \\
+  > = np \sum_{i=0}^{n-1} \frac {(n-1)!} {i! (n-1-i!} p^{i} (1-p)^{n-1-i} \\
+  > = np(p+1-p)^{n-1} = np
+  > \end{array}$
+  
+  （2）利用性质推导
+  
+  > $\begin{array}{l}
+  > {X_i} = \left\{ \begin{array}{l}
+  > 1 & 第i次A事件发生 \\
+  > 0 & 第i次A事件发生
+  > \end{array} \right.\\
+  > X = {X_1} + {X_2} +  \cdots  + {X_n}\\
+  > E({X_i}) = p\\
+  > \therefore E(X) = E({X_1} + {X_2} +  \cdots  + {X_n})\\
+  >  = E({X_1}) + E({X_2}) +  \cdots  + E({X_n})\\
+  >  = np
+  > \end{array}$ 
+
+- 柏松分布
+  
+  > $\begin{array}{l}
+  > X \sim P(\lambda) \\
+  > E(X) = \sum_{k=0}^{+\infty} k \frac {\lambda ^k} {k!} e^{-\lambda} \\
+  > = \sum_{k=1}^{+\infty} \frac {\lambda ^k} {(k-1)!} e^{-\lambda} \\
+  > = \lambda \sum_{k=1}^{+\infty} \frac {\lambda ^{k-1}} {(k-1)!} e^{-\lambda} \\
+  > = \lambda (e^{\lambda}) e^{-\lambda} \\
+  > = \lambda
+  > \end{array}$
+
+### 三种常见的连续型随机变量的期望
+
+- 均匀分布
+  
+  > $\begin{array}{l}
+  > X \sim \bigcup [a, b] \\
+  > E(X) = \int_{-\infty}^{+\infty} xp(x)dx  \\
+  > = \int_a^b \frac {x} {b-a} dx \\
+  > = \frac {1} {b-a} \frac {1} {2} x^2 \mid_a^b \\
+  > = \frac {a+b} {2}  
+  > \end{array}$
+
+- 指数分布
+  
+  > $\begin{array}{l}
+  > X \sim Exp(\lambda), \lambda > 0 \\
+  > E(X) = \int_0^{+\infty} x \lambda e^{- \lambda x} \\
+  > = - \int_0^{+\infty} x de^{-\lambda x} \\
+  > = -xe^{-\lambda x} \mid_0^{+\infty} + \int_0^{+\infty} e^{-\lambda x}dx \\
+  > = 0 - \frac {1} {\lambda} e^{-\lambda x} \mid_0^{+\infty} \\
+  > = \frac {1} {\lambda}
+  > \end{array}$
+
+- 正太分布
+  
+  > $\begin{array}{l}
+  > X \sim N(u, \sigma^2) \\
+  > E(X) = \int_{-\infty} ^{+\infty} x \frac {1} {\sqrt{2\pi} \sigma} e^{-\frac {(x-u)^2} {2\sigma^2}} dx \\
+  > let \quad t = \frac {x-u} {\sigma}, x = t\sigma +u, t \in (-\infty, +\infty) \\
+  > = \int_{-\infty}^{+\infty} (t \sigma + u) \frac {1} {\sqrt {2 \pi} \sigma} e^{- \frac {t^2} {2}} d(\sigma t + u) \\
+  > = \frac {1} {\sqrt{2\pi} \sigma} \int_{-\infty}^{+\infty} (t \sigma + u) e^{- \frac {t^2} {2}} * \sigma dt \\
+  > = \frac {u} {\sqrt{2\pi}}  \int_{-\infty}^{+\infty} e^{- \frac {t^2} {2}} dt \\
+  > = u
+  > \end{array}$
+
+### 随机变量函数的期望
+
+设X的分布已知，Y=g(x)， g是连续函数，求 E(Y)
+
+（1）离散
+
+$\begin{array}{l} P \{X=a_i \} = p_i, i=1,2,... \\
+则E(Y) = E(g(x)) = \sum_{i=1}^{\infty} g(a_i) p_i (绝对收敛)
+\end{array}$
+
+（2）连续
+$\begin{array}{l} X, p(x)是其密度函数 \\
+则E(Y) = E(g(x)) = \sum_{-\infty}^{+\infty} g(x) p(x)dx (绝对收敛)
+\end{array}$
+
+### 性质
+
+- $E(C) = C$
+
+- E(CX) = CE(X)
+
+- 设两个随机变量X,Y $E(X \pm Y) = E(X) \pm E(Y)$
+
+- 若X,Y 相互独立 E(XY) = E(X) E(Y)
+
+## 方差
+
+### 定义
+
+- $D(X) = VAR(X) = E(X-E(X))^2$
+
+- 考虑数据变异或者离散程度
+
+- $\sigma(X) = \sqrt{D(X)}$ 标准差（均方差）<font color=red>为了和X保持相同的量纲</font>
+
+- （1）离散型
+  
+  > | X   | $a_1$ | ... | $a_i$ | ... |
+  > | --- | ----- | --- | ----- | --- |
+  > | P   | $p_1$ | ... | $p_i$ | ... |
+  > 
+  > $D(X) = \sum_{k=1}^n (a_k - E(X))^2 p_k$
+  
+  （2）连续型
+  
+  > $D(X) = \int_{-\infty}^{+\infty} (x - E(x))^2 p(x) dx$
+
+### 性质
+
+- D(C) = 0
+
+- $\begin{array}{l}
+  D(X) = E{(X - E(X))^2}\\
+   = E({X^2} - 2XE(X) + {(E(X))^2})\\
+   = E({X^2}) - 2E(X)E(X) + {(E(X))^2}\\
+   = E({X^2}) - {(E(X))^2}
+  \end{array}$
+
+- 对任意的常数a,b $D(aX+b) = a^2D(X)$
+
+- $\begin{array}{l}
+  D(X + Y) = E{(X + Y - E(X + Y))^2}\\
+   = E{[(X + Y - E(X) - E(Y))]^2}\\
+   = E{[(X - E(X)) + (Y - E(Y))]^2}\\
+   = E[{(X - E(X))^2} + {(Y - E(Y))^2} - 2(X - E(X))(Y - E(Y))]\\
+   = E{[X - E(X)]^2} + E{[Y - E(Y)]^2} - 2E[(X - E(X))(Y - E(Y))]\\
+   = D(X) + D(Y) - 2E[(X - E(X))(Y - E(Y))]
+  \end{array}$
+
+- X,Y 相互独立时 $D(X \pm Y) = D(X) \pm D(Y)$  
+
+### 三种常见的离散型的方差
+
+- 两点分布
+  
+  > | $X^2$ | 1   | 0   |
+  > | ----- | --- | --- |
+  > | P     | p   | 1-p |
+  
+  > $\begin{array}{l}
+  > E({X^2}) = 1 \times p + 0 \times (1 - p) = p\\
+  > \therefore D(X) = E({X^2}) - {(E(X))^2}\\
+  > = p - {p^2} = p(1 - p)
+  > = \end{array}$
+
+- 二项分布
+  
+  > $\begin{array}{l}
+  > X \sim B(n,p) \end{array}$
+  > 
+  > ${X_i} = \left\{ \begin{array}{l}
+  > 1 & 第i次A事件发生 \\
+  > 0 & 第i次A事件发生
+  > \end{array} \right. $
+  > 
+  > $\begin{array}{l}
+  > X = {X_1} + {X_2} +  \cdots  + {X_n}\\
+  > \therefore D(X) = D({X_1} + {X_2} +  \cdots  + {X_n})\\
+  >  = D{X_1} + D{X_2} +  \cdots  + D{X_n}\\
+  >  = npq
+  > \end{array}$
+
+- 柏松分布
+  
+  > $\begin{array}{l}
+  > X \sim P(\lambda )\\
+  > E({X^2}) = \sum\limits_{k = 0}^{ + \infty } {{k^2}\frac{{{\lambda ^k}}}{{k!}}{e^{ - \lambda }}} \\
+  >  = \sum\limits_{k = 1}^{ + \infty } {\frac{{k{\lambda ^k}}}{{(k - 1)!}}{e^{ - \lambda }}} \\
+  >  = \sum\limits_{k = 1}^{ + \infty } {\frac{{(k - 1 + 1){\lambda ^k}}}{{(k - 1)!}}{e^{ - \lambda }}} \\
+  >  = {\lambda ^2}\sum\limits_{k = 2}^{ + \infty } {\frac{{{\lambda ^{k - 2}}}}{{(k - 2)!}}{e^{ - \lambda }}}  + \lambda \sum\limits_{k = 1}^{ + \infty } {\frac{{{\lambda ^{k - 1}}}}{{(k - 1)!}}{e^{ - \lambda }}} \\
+  >  = {\lambda ^2}({e^\lambda }{e^{ - \lambda }}) + \lambda ({e^\lambda }{e^{ - \lambda }})\\
+  >  = {\lambda ^2} + \lambda \\
+  > \therefore D(X) = E({X^2}) - {[E(X)]^2}\\
+  >  = {\lambda ^2} + \lambda  - {\lambda ^2}\\
+  >  = \lambda  = E(X)
+  > \end{array}$
+
+### 三种常见的连续型的方差
+
+- 均匀分布
+  
+  > $\begin{array}{l}
+  > X \sim U[a,b] \\
+  > E(X^2) = \int_a^b x^2 \frac {1} {b-a}dx \\
+  > = \frac {1} {3(b-a)} x^3 \mid_a^b \\
+  > = \frac {1} {3(a^2+ab+b^2)} \\
+  > \therefore D(X) = E(X^2) - (E(X))^2 \\
+  > = \frac {1} {3(a^2+ab+b^2)} - (\frac {a+b} {2})^2 \\
+  > = \frac {(b-a)^2} {12}
+  > \end{array}$
+
+- 指数分布
+  
+  > $\begin{array}{l}
+  > X \sim Exp(\lambda )\\
+  > E({X^2}) = \int_0^{ + \infty } {{x^2}\lambda {e^{ - \lambda x}}} dx\\
+  >  =  - \int_0^{ + \infty } {{x^2}} d{e^{ - \lambda x}}\\
+  >  =  - {x^2}{e^{ - \lambda x}}{|_0}^{ + \infty } + 2\int_0^{ + \infty } x {e^{ - \lambda x}}dx\\
+  >  = 0 + \frac{2}{\lambda }\int_0^{ + \infty } {\lambda x} {e^{ - \lambda x}}dx\\
+  >  = \frac{2}{\lambda }*\frac{1}{\lambda } = \frac{2}{{{\lambda ^2}}}\\
+  > \therefore D(X) = E({X^2}) - {[E(X)]^2}\\
+  >  = \frac{2}{{{\lambda ^2}}} - \frac{1}{{{\lambda ^2}}} = \frac{1}{{{\lambda ^2}}}
+  > \end{array}$
+
+- 正太分布
+  
+  > $\begin{array}{l}
+  > 设X的 E(X) = u, D(X)=\sigma^2 \ne 0 \\
+  > let \quad Y=\frac {X-u} {\sigma} \\
+  > E(Y) = E(\frac {X-u} {\sigma}) = \frac {1} {\sigma} [E(X) - E(u)] \\
+  > \frac {1} {\sigma} (u - u) = 0 \\
+  > D(Y) = D(\frac {X-u} {\sigma}) = \frac {1} {\sigma^2} D(X) = 1
+  > \end{array}$
+  
+  > $\begin{array}{l}
+  > X \sim N(0,1)\\
+  > E({X^2}) = \int_{ - \infty }^{ + \infty } {{x^2}\frac{1}{{\sqrt {2\pi } }}} {e^{ - \frac{{{x^2}}}{2}}}dx\\
+  >  = \frac{1}{{\sqrt {2\pi } }}\int_{ - \infty }^{ + \infty } {( - x)} d{e^{ - \frac{{{x^2}}}{2}}}\\
+  >  = \frac{1}{{\sqrt {2\pi } }}[ - x{e^{ - \frac{{{x^2}}}{2}}}{|_{ - \infty }}^{ + \infty } + \int_{ - \infty }^{ + \infty } {} {e^{ - \frac{{{x^2}}}{2}}}dx]\\
+  >  = \frac{1}{{\sqrt {2\pi } }}[0 + \int_{ - \infty }^{ + \infty } {} {e^{ - \frac{{{x^2}}}{2}}}dx] = 1\\
+  > \therefore D(X) = E({X^2}) - {[E(X)]^2}\\
+  >  = 1 - 0 = 1\\
+  > \therefore Y \sim N(u,{\sigma ^2})\\
+  > X = \frac{{Y - u}}{\sigma } \sim N(0,1)\\
+  > Y = X\sigma  + u\\
+  > E(Y) = E(X\sigma  + u) = \sigma E(X) + E(u)\\
+  >  = 0 + u = u\\
+  > D(Y) = D(X\sigma  + u) = {\sigma ^2}D(X) = {\sigma ^2}
+  > \end{array}$
+
+## 协方差、相关系数
+
+对于X，Y两个随机变量，需要考虑三个方面：（1）除了可以单独考虑D(X),D(Y) （2）作为整体来考虑 （3）D(X),D(Y) 之间的关系
+
+### 协方差
+
+- 反应多维随机变量分散或者离异的程度。定义就是X与期望的偏差与Y与期望的偏差相乘，然后求一个平均的差，即$Cov(X,Y) = E[(X-E(X)) (Y-E(Y))]$
+
+- 性质
+  
+  > （1）$Cov(X,Y) = Cov(Y,X)$
+  > 
+  > （2）$Cov(X,X) = D(X)$
+  > 
+  > （3）$Cov(X,Y) = E(XY) - E(X)E(Y)$
+  > 
+  > （4）X,Y相互独立，则$Cov(X,Y) = 0$ , 反之不一定成立
+  > 
+  > （5）$Cov(X_1+X_2, Y) = Cov(X_1,Y) + Cov(X_2, Y)$
+  > 
+  > （6）$Cov(aX,bY) = abCov(X,Y)$
+
+- ex
+  
+  > 设X，Y的联合概率密度函数为
+  > 
+  >   $p(x,y) = \left\{ \begin{array}{l}
+  > 2 & 0 \le x \le 1,0 \le y \le x\\
+  > 0 & others
+  > \end{array} \right.$
+  > 
+  > 求Cov(X,Y)
+  > 
+  > $\begin{array}{l}
+  > E(X) = \iint\limits_D {xp(x,y)dxdy} \\
+  >  = \int_0^1 {[\int_0^x {x*2dy} ]dx}  = 2/3 \\
+  > E(Y) = \iint\limits_D {yp(x,y)dxdy} \\
+  > = \int_0^1 {[\int_0^x {y*2dy} ]dx}  = 1/3 \\
+  > E(XY) = \iint\limits_D {xyp(x,y)dxdy} \\
+  > = \int_0^1 {[\int_0^x {xy*2dy} ]dx}  = 1/4 \\
+  > \therefore Cov(X,Y) = E(XY) - E(X)E(Y) \\
+  > = 1/4 - 2/3*1/3 = 1/36 \\ 
+  > \end{array}$
+
+## 矩、协方差矩阵
 
 # 大数定律以中心极限定理
 
