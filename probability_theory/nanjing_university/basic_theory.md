@@ -1413,10 +1413,9 @@ $\begin{array}{l} X, p(x)是其密度函数 \\
   > {\rho _{XY}} = 0, X,Y 不相关\\
   > p(x,y) \ne p(x)p(y) \Rightarrow X,Y 不独立
   > \end{array}$
-  > 
 
 - ex 4
-
+  
   > 如果维随机变量服从维正态分布，那么它们两两独立等价于它们两两不相关
 
 ## 矩、协方差矩阵
@@ -1449,6 +1448,87 @@ $\begin{array}{l} X, p(x)是其密度函数 \\
   > 高阶矩存在，那么低阶矩肯定存在；反之未必
 
 # 大数定律以中心极限定理
+
+## 两种收敛性概念
+
+> 微积分种的收敛性，是依 "距离" 进行收敛性的判断; 而此处的收敛性是依 "概率" 进行收敛性的判断
+
+### 依概率收敛
+
+> 设 $X_1,X_2,\cdots, X_n, \cdots$ 是随机变量的序列，X是某一个随机变量(或者常数)， 对于 $\forall \epsilon > 0$, 若
+> $\begin{array}{l}
+> \mathop {\lim }\limits_{n \to \infty } P\{ |{X_n} - X| < \varepsilon \}  = 1 \\ 或
+> \mathop {\lim }\limits_{n \to \infty } P\{ |{X_n} - X| \geqslant \varepsilon \}  = 0 \\ 
+> \end{array}$, 则称随机序列 ${X_i}, i=1,2,3,...$依概率收敛于X，记做 ${X_n} \xrightarrow {P}X$
+
+### 依分布收敛
+
+> 设 $X_1,X_2,\cdots, X_n, \cdots$ 是随机变量的序列，X是某一个随机变量， $F_n(x)是X_n d的分布函数, i=1,2,3,...; F(x)是X的分布函数$
+> 若在F(x)的连续点X处都有 $\mathop {\lim} \limits_{n \to \infty } F_n(x) = F(x)$, 则称 $X_i$依分布收敛于X，记作 $X_n \xrightarrow {L} X$ （这表明$\{X_n\}$ 以X的分布为极限分布）
+
+## 切比雪夫不等式
+
+> 估计概率、证明大数定律、统计推断等起到作用的不等式
+
+- 定义
+
+> 设随机变量X的期望为E(X)，D(X)都存在， 则对 $\forall \epsilon > 0$, 有
+> $P\{ |X-E(X)| \ge \epsilon \} \le \frac {D(X)} {\epsilon^2}$ 或 
+> $P\{ |X-E(X)| < \epsilon \} \ge 1 - \frac {D(X)} {\epsilon^2}$
+
+> 证明:(以连续型随机变量为例，概率密度函数为p(x))
+> $\begin{array}{l} 
+> P \{ |X-E(X)| \ge \epsilon \} = \int \limits_{|X-E(X)| \ge \epsilon} p(x) dx \\
+> \le \int \limits_{|X-E(X)| \ge \epsilon} \frac {|X-E(X)|^2} {\epsilon^2} p(x) dx \\
+> \le \frac {1} {\epsilon^2} \int_{-\infty}^{+\infty} |X-E(X)|^2 p(x)dx \\
+> = \frac {D(X)} {\epsilon^2}
+> \end{array}$
+
+- 具体含义
+
+> 以E(X)为中心，$\epsilon$为半径的对称区间，随机变量发生的概率；或者说这个对称区间外部发生的概率.(这里是估计值)
+
+- ex1
+
+> 设X的分布未知，但 $E(X) = u, D(X) = \sigma^2$, 试估计 $P\{ |X-u| \ge 3\sigma \}$ 及 $P \{ |X-u|\} \le 4\sigma$
+> 分析：$P\{ |X-u| \ge 3\sigma \} \le \frac {D(X)} {(3\sigma)^2} = \frac {1} {9}$
+> $P\{ |X-u| < 4\sigma \} \ge 1 - \frac {D(X)} {(4\sigma)^2} = \frac {15} {16}$
+
+- ex2
+
+> 设 $\{ X_i\}$ 是独立同分布的随机变量序列，有公共的期望u和方差 $\sigma^2$， 证明: $\overline X = \frac {1} {n}\sum_{i=1}^n X_i \xrightarrow {P} u$
+> 分析: 
+> $\begin{array}{l} 
+> E(\overline X) = E(\frac {1} {n} \sum_{i=1}^n X_i) = \frac {1} {n} (nu) = u \\
+> D(\overline X) = D(\frac {1} {n} \sum_{i=1}^n X_i) = \frac {1} {n^2} (n \sigma^2) = \frac {\sigma^2} {n} \\
+> \therefore P \{ |\overline X -u | \ge \epsilon \} \le \frac {\frac {\sigma^2} {n}} {\epsilon^2} = 0 (n-> +\infty)
+> \end{array}$
+
+## 大数定律
+
+> 概率的统计学定义的合理性(随机现象的统计学规律：在相同的条件下进行大量的重复实验才能显现出来)
+
+- 定义
+
+> 设有随机变量序列 $\{X_i \}, i=1,2,3,\cdots; E(X_i), i =1,2,3, \cdots$都存在，若对 $\forall \epsilon > 0$
+> 有: $\mathop {\lim} \limits_{n->\infty} P \{ |\frac {1} {n} \sum_{i=1}^n X_i - \frac {1} {n} \sum_{i=1}^n E(X_i)| < \epsilon \} = 1$
+> 则称 \{X_i\} 服从大数定律。即 ($\frac {1} {n} \sum_{i=1}^n X_i - \frac {1} {n} \sum_{i=1}^n E(X_i) \xrightarrow {P} 0$)
+
+> 大叔定律说明来算数平均值及频率(随着实验次数趋于无穷大)的稳定性
+
+- 常见的大数定律
+
+> （1）切比雪夫大数定律
+> 
+> （2）独立同分布
+> 
+> （3）伯努利
+
+- 小概率事件原理
+
+## 中心极限定理
+
+> 正太分布的重要性
 
 # 抽样分布理论
 
