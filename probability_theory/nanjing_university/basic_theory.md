@@ -1360,7 +1360,93 @@ $\begin{array}{l} X, p(x)是其密度函数 \\
   > = 1/4 - 2/3*1/3 = 1/36 \\ 
   > \end{array}$
 
+### 相关系数
+
+- 含义
+
+> 上面的集中数字特征都是有单位的，期望的单位和原来的随机变量单位相同；方差的单位是原来随机变量单位的平方；协方差的单位是两个随机变量单位的乘积
+> 消除单位的影响: $\rho_{XY} = \frac {Cov(X,Y)} {\sqrt{D(X)} \sqrt{D(Y)}}$
+> 相关系数是: 标准尺度下的协方差 $X^*=\frac {X-E(X)} {D(X)}, y^* = \frac {Y-E(Y)} {D(Y)}, \rho_{XY} = Cov(X^*, Y^*)$
+
+- 性质
+
+> （1）若X,Y 相互独立，则$\rho_{XY} = 0$
+> （2）<font color=red>相关系数是一个线性的相关系数，反应的是两个变量之间线性依赖的关系。</font>
+> $\left| {{\rho _{XY}}} \right| \le 1$
+> $\rho_{XY} = 1 \Leftrightarrow 存在a>0, b \in R, 使 Y=aX+b (完全正相关)$
+> $\rho_{XY} = -1 \Leftrightarrow 存在a<0, b \in R, 使 Y=aX+b (完全负相关)$
+> $\rho_{XY} = 0 X,Y不相关)$
+
+### 实例
+
+- ex1
+  
+  > 设$X \sim U(-\frac {1} {2}, \frac {1} {2} ), Y=cos(X), 求\rho_{XY}$
+  > 分析：$\begin{array}{l}
+  > E(X) = 0 \\
+  > E(XY) = E(xcos(x)) = \int_{-1/2} ^{1/2} xcos(x) * 1 dx = 0 \\
+  > Cov(X,Y)= E(XY) - E(X)E(Y) = 0 \\
+  > \rho_{XY} = 0 => X与Y非线性相关
+  > \end{array}$
+
+- ex2
+  
+  > 投掷一枚硬币n 次，X表示正面出现次数，Y表示反面出现的次数，求 $\rho_{XY}$
+  > 分析：X+Y=n
+  > Y = -X +n
+  > $\rho_{XY} = -1, 完全负相关关系$
+
+- ex 3
+  
+  > 设(X,Y)服从平面上单位圆内的均匀分布，求$\rho_{XY}及X,Y的独立性$
+  > $\begin{array}{l}
+  > p(x,y) = \left\{ \begin{array}{l}
+  > \frac{1}{\pi },{x^2} + {y^2} \le 1\\
+  > 0,others
+  > \end{array} \right.\\
+  > p(x) = \int_{ - \infty }^{ + \infty } {p(x,y)dy = } \int_{ - \sqrt {1 - {x^2}} }^{ + \sqrt {1 - {x^2}} } {\frac{1}{\pi }dy = } \frac{2}{\pi }\sqrt {1 - {x^2}} ,( - 1 \le x \le 1)\\
+  > p(y) = \int_{ - \infty }^{ + \infty } {p(x,y)dx = } \int_{ - \sqrt {1 - {y^2}} }^{ + \sqrt {1 - {y^2}} } {\frac{1}{\pi }dx = } \frac{2}{\pi }\sqrt {1 - {y^2}} ,( - 1 \le y \le 1)\\
+  > E(X) = \int_{ - \infty }^{ + \infty } {xp(x)dx = } \int_{ - 1}^{ + 1} {x\frac{2}{\pi }\sqrt {1 - {x^2}} dx = } 0\\
+  > E(Y) = \int_{ - \infty }^{ + \infty } {yp(y)dy = } \int_{ - 1}^{ + 1} {y\frac{2}{\pi }\sqrt {1 - {y^2}} dy = } 0\\
+  > E(XY) = \int_{ - 1}^{ + 1} {(\int_{ - \sqrt {1 - {x^2}} }^{ + \sqrt {1 - {x^2}} } {\frac{1}{\pi }dy} )dx = } 0\\
+  > Cov(X,Y) = E(XY) - E(X)E(Y) = 0\\
+  > {\rho _{XY}} = 0, X,Y 不相关\\
+  > p(x,y) \ne p(x)p(y) \Rightarrow X,Y 不独立
+  > \end{array}$
+  > 
+
+- ex 4
+
+  > 如果维随机变量服从维正态分布，那么它们两两独立等价于它们两两不相关
+
 ## 矩、协方差矩阵
+
+- 协方差矩阵
+  
+  > 设有n维随机变量$(X_1,X_2,X_3, \ldots, X_n), C_{ij} = Cov(x_i, x_j), i,j=1,2,\ldots,n$
+  > $C = \left[ \begin{array}{l}
+  > {c_{11}} \quad {c_{12}} \quad \cdots \quad {c_{1n}}\\
+  > {c_{21}} \quad {c_{22}} \quad \cdots \quad {c_{2n}}\\
+  >  \vdots \quad \quad  \vdots \quad \quad  \cdots  \quad \vdots \\
+  > {c_{n1}} \quad {c_{n2}} \quad \cdots \quad {c_{nn}}
+  > \end{array} \right]$
+  > 
+  > 为n维随机变量
+
+- 协方差矩阵性质
+  
+  > （1）对角线 $c{ij} = D(X_i), i=1,2,3,\cdots, n$
+  > （2）$c_{ij} = c_{ji}, 即C=C^T => 对称矩阵$
+
+- 矩
+  
+  > 若 $E(|X|^k) < +\infty$(小于 $+\infty$ 表示存在或者有限的，即有意义的期望值), 则称 $\alpha_k = E(X^k), k=1,2,\cdots$ 为k阶的原点矩。
+  > 若$E(X)$存在，且 $E(|X-E(X)|^k < \infty$, 则称 $\beta_k = E((X - E(X))^k), k=1,2,\cdots$ k 阶中心距(含义: 随机变量的取值到期望值偏差的k次方的平均的度量).
+  
+  > 期望、方差、协方差、相关系数都是属于更一般意义的特征 -- 矩。
+  > 期望E(X)是一阶的原点矩
+  > 方差D(X)是二阶的中心距
+  > 高阶矩存在，那么低阶矩肯定存在；反之未必
 
 # 大数定律以中心极限定理
 
