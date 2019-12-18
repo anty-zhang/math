@@ -1718,9 +1718,13 @@ $\begin{array}{l} X, p(x)是其密度函数 \\
 ## 抽样分布定理(正态总体均值、方差相关的分布)
 
 > 设 $X_1, X_2, \cdots, X_n$ 是来自正态总体分布 $X \sim N(u, \sigma^2)$的样本
+> 
 > $\overline X = \frac {1} {n} \sum_{i=1}^n X_i, S^2 = \frac {1} {n-1} \sum_{i=1}^n (X_i - \overline X)^2$
+> 
 > 那么, (1) $\overline X \sim N(u, \frac {\sigma^2} {n})$
+> 
 > $E(\overline X) = E(\frac {1} {n} \sum_{i=1}^n X_i) = \frac {1} {n} * (nu) = u$
+> 
 > $D(\overline X) = D(\frac {1} {n} \sum_{i=1}^n X_i) = \frac {1} {n^2} * (n \sigma) = \frac {\sigma} {n}$
 
 > ex: 用一把尺子，测量某件仪器，怎样可以测量误差最小？（多次测量取平均值，上面就是理论依据）
@@ -1730,11 +1734,54 @@ $\begin{array}{l} X, p(x)是其密度函数 \\
 
 > (3) $\overline X 与 S^2$是相互独立的
 
->（4）有(1)(2)构造t分布 $T = \frac {\sqrt{n} (\overline X - u)} {S} \sim t(n-1)$
+> （4）有(1)(2)构造t分布 $T = \frac {\sqrt{n} (\overline X - u)} {S} \sim t(n-1)$
 
-> (5) $$
+> (5) 设 $X_1,X_2,\cdots,X_n$ 和 $Y_1,Y_2,\cdots,Y_n$ 分别来自正态总体$N(u_1, \sigma_1^2), N(u_2, \sigma_2^2)$，<font color=red>两个样本相互独立</font>
+> 
+> $\overline X = \frac {1} {n1} \sum_{i=1}^{n1} X_i, \overline Y = \frac {1} {n2} \sum_{i=1}^{n2} Y_i$
+> 
+> $S_1^2 = \frac {1} {n1-1} \sum_{i=1}^{n1} (X_i - \overline X)^2, S_2^2 = \frac {1} {n2-1} \sum_{i=1}^{n2} (X_i - \overline Y)^2$
+> 
+> 那么有 $\frac {S_1^2/S_2^2} {\sigma_1^2/\sigma_2^2} \sim F(n_1 -1, n_2 -1)$
+> 
+> $\sigma_1^2 = \sigma_2^2 = \sigma^2 => \frac {(\overline X - \overline Y) - (u1-u2)} {S_w \sqrt{1/n_1 + 1/n_2}} \sim t(n_1+n_2-2),S_w^2 = \frac {(n_1 - 1)S_1^2 + (n_2 - 1) S_2^2} {n_1+n_2-2}$
+> 
+> 证明：$\begin{array}{l}
+> {V_1} = \frac{{({n_1} - 1){S_1}^2}}{{{\sigma _1}^2}} = \frac{{\sum\limits_{i = 1}^{{n_1}} {{{({X_i} - \overline X )}^2}} }}{{{\sigma _1}^2}} \sim {\chi ^2}({n_1} - 1)\\
+> {V_2} = \frac{{({n_2} - 1){S_2}^2}}{{{\sigma _2}^2}} = \frac{{\sum\limits_{i = 1}^{{n_2}} {{{({Y_i} - \overline Y )}^2}} }}{{{\sigma _2}^2}} \sim {\chi ^2}({n_2} - 1)\\
+> \frac{{{V_1}/({n_1} - 1)}}{{{V_2}/({n_2} - 1)}} = \frac{{{S_1}^2/{S_2}^2}}{{{\sigma _1}^2/{\sigma _2}^2}} \sim F({n_1} - 1,{n_2} - 1)
+> \end{array}$
+> 
+> $\begin{array}{l}
+> U = \overline X  - \overline Y  \sim ({u_1} - {u_2},\frac{{{\sigma ^2}}}{{{n_1}}} + \frac{{{\sigma ^2}}}{{{n_2}}} )\quad (正态分布可加性)\\
+>  = \frac{{(\overline X  - \overline Y ) - ({u_1} - {u_2})}}{{\sigma \sqrt {\frac{1}{{{n_1}}} + \frac{1}{{{n_2}}}} }} \sim N(0,1)\\
+> V = {V_1} + {V_2} = \frac{{({n_1} - 1){S_1}^2}}{{{\sigma ^2}}} + \frac{{({n_2} - 1){S_2}^2}}{{{\sigma ^2}}} \sim {\chi ^2}({n_1} + {n_2} - 2) \quad （独立，\chi^2分布可加性）\\
+> \frac{U}{{\sqrt {V/({n_1} + {n_2} - 2)} }} = \frac{{(\overline X  - \overline Y ) - ({u_1} - {u_2})}}{{{S_w}\sqrt {\frac{1}{{{n_1}}} + \frac{1}{{{n_2}}}} }} \sim t({n_1} + {n_2} - 2)\\
+> ({n_1} + {n_2} - 2){S^2}_w = ({n_1} - 1){S_1}^2 + ({n_2} - 1){S_2}^2\\
+> \end{array}$
 
 # 描述统计
+
+> 描述统计学(Descriptive Statistics)通常用来组织和概括最初收集的数据。当统计学家在做调查时，会收集大量的数据，这些数据在原始状态下通常杂乱无章。为了消除这些混乱，希望使用一些易懂的方式重新组织和展现数据。这些方式包括图表和汇总计算。我们把这些描述、概括、和表现批量数据的方法和工具统称为统计描述。
+
+## 变量类型
+
+> 在统计应用中，通常需要考察一个变量或者多个变量的变化趋势及其关联性。变量是一个具有很多值(可能无穷多个)的特征或现象，它会随着环境等其他因素的变化而变化。比如身高、体重等。在统计和实验分析中，要区分自变量和因变量。
+
+> 根据不同的度量水平将变量分为以下四类
+
+- 定类变量(Nominal Variable)
+
+- 定序变量(Ordinal Variable)
+ 
+- 定距变量 (Interval Variable)
+
+- 定必变量 (Ratio Variable)
+
+
+## 统计图表
+
+## 数据汇总
 
 # 参数估计
 
