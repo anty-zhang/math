@@ -1965,7 +1965,16 @@ $\begin{array}{l} X, p(x)是其密度函数 \\
 
 - 调和平均数
 
-  > 
+  > 定义：又称为倒数平均值，它是对每个数据的倒数求平均，然后再求倒数
+  > $\begin{array}{l}
+  > \overline {{X_H}}  = \frac{1}{{\frac{{\frac{1}{{{X_1}}} + \frac{1}{{{X_2}}} +  \cdots  + \frac{1}{{{X_n}}}}}{n}}} = \frac{n}{{\sum\limits_{i = 1}^n {\frac{1}{{{X_i}}}} }}
+  > \end{array}$
+
+  > $\begin{array}{l}
+  > \overline {{X_H}}  = \frac{1}{{\frac{{\frac{{{w_1}}}{{{X_1}}} + \frac{{{w_2}}}{{{X_2}}} +  \cdots  + \frac{{{w_n}}}{{{X_n}}}}}{{{w_1} + {w_2} +  \cdots  + {w_n}}}}} = \frac{{\sum\limits_{i = 1}^n {{w_i}} }}{{\sum\limits_{i = 1}^n {\frac{{{w_i}}}{{{X_i}}}} }}
+  > \end{array}$
+
+  > 性质：（1）易受极值的影响，且受极小值的影响比极大值的影响更大 （2）应用范围较小，当任一数据为0时，就不能使用调和平均值
 
 ### 离散趋势度量(Variation Tendency)
 
