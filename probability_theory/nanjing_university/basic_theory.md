@@ -2190,9 +2190,9 @@ $\begin{array}{l} X, p(x)是其密度函数 \\
 ### 常见的集中区间估计
 
 - 一个正态总体 $X \sim N(u, \sigma^2)$ 的情形
-
+  
   > （1）方差 $\sigma^2$ 已知，u的置信区间为 $[\overline X - \frac {\sigma} {\sqrt{n}} z_{\frac {\alpha} {2}}, \overline X + \frac {\sigma} {\sqrt{n}} n_{\frac {\alpha} {2}}]$ (推到过程见上面实例)
-
+  
   > （2）方差 $\sigma^2$ 未知，u的置信区间为 $[\overline X - \frac {S} {\sqrt{n}} t_{\frac {\alpha} {2}} (n-1), \overline X + \frac {S} {\sqrt{n}} t_{\frac {\alpha} {2}}(n-1)]$
   > 推导：$\begin{array}{l}
   > \overline X  \sim (u,\frac{\sigma }{n})\\
@@ -2202,7 +2202,7 @@ $\begin{array}{l} X, p(x)是其密度函数 \\
   > P\{ \left| {\frac{{\overline X  - u}}{{S/\sqrt n }}} \right| \ge {t_{\frac{\alpha }{2}}}(n - 1)\} \\
   > [\overline X  - \frac{S}{{\sqrt n }}{t_{\frac{\alpha }{2}}}(n - 1),\overline X  + \frac{S}{{\sqrt n }}{t_{\frac{\alpha }{2}}}(n - 1)]
   > \end{array}$
-
+  
   > （3）u已知，方差 $\sigma^2$ 的置信区间
   > $\begin{array}{l}
   > X \sim N(u,\sigma )\\
@@ -2211,7 +2211,7 @@ $\begin{array}{l} X, p(x)是其密度函数 \\
   > P\{ {\chi ^2}_{1 - \frac{\alpha }{2}}(n) < \frac{{\sum\limits_{i = 1}^n {({X_i} - u} {)^2}}}{{{\sigma ^2}}} < {\chi ^2}_{\frac{\alpha }{2}}(n)\}  = 1 - \alpha \\
   > [\frac{{\sum\limits_{i = 1}^n {({X_i} - u} {)^2}}}{{{\chi ^2}_{\frac{\alpha }{2}}(n)}},\frac{{\sum\limits_{i = 1}^n {({X_i} - u} {)^2}}}{{{\chi ^2}_{1 - \frac{\alpha }{2}}(n)}}]
   > \end{array}$
-
+  
   > （4）u未知，方差 $\sigma^2$ 的置信区间
   > $\begin{array}{l}
   > K = \frac{{(n - 1){S^2}}}{{{\sigma ^2}}} \sim {\chi ^2}(n - 1)\\
@@ -2219,9 +2219,60 @@ $\begin{array}{l} X, p(x)是其密度函数 \\
   > [\frac{{(n - 1){S^2}}}{{{\chi ^2}_{\frac{\alpha }{2}}(n - 1)}},\frac{{(n - 1){S^2}}}{{{\chi ^2}_{1 - \frac{\alpha }{2}}(n - 1)}}]
   > \end{array}$
 
+- 两个正态总体分布
+  
+  > $(X_1, X_2, \cdots, X_n)$ 为取自总体 $N(u_1, \sigma_1^2)$ 的样本； $(Y_1, Y_2, \cdots, Y_m)$ 为取自总体 $N(u_2, \sigma_2^2)$ 的样本
+  > $\overline X, S_1^2; \overline Y, S_2^2$分别表示两个样本的均值和方差，置信度为 $1 - \alpha$
+  
+  > （1）$\sigma_1^2, \sigma_2^2$ 已知，求 $u_1 - u_2$ 的置信区间
+  > $\begin{array}{l}
+  > \overline X  \sim N({u_1},\frac{{{\sigma ^2}_1}}{n}),\overline Y  \sim N({u_2},\frac{{{\sigma ^2}_2}}{m}) , \overline X, \overline Y 相互独立\\
+  > U = \frac{{(\overline X  - \overline Y ) - ({u_1} - {u_2})}}{{\sqrt {\frac{{{\sigma ^2}_1}}{n} + \frac{{{\sigma ^2}_2}}{m}} }} \sim N(0,1)\\
+  > P\{  - {z_{\frac{\alpha }{2}}} \le U \le {z_{\frac{\alpha }{2}}}\}  = P\{  - {z_{\frac{\alpha }{2}}} \le \frac{{(\overline X  - \overline Y ) - ({u_1} - {u_2})}}{{\sqrt {\frac{{{\sigma ^2}_1}}{n} + \frac{{{\sigma ^2}_2}}{m}} }} \le {z_{\frac{\alpha }{2}}}\}  = 1 - \alpha \\
+  > [(\overline X  - \overline Y ) - {z_{\frac{\alpha }{2}}}\sqrt {\frac{{{\sigma ^2}_1}}{n} + \frac{{{\sigma ^2}_2}}{m}} ,(\overline X  - \overline Y ) + {z_{\frac{\alpha }{2}}}\sqrt {\frac{{{\sigma ^2}_1}}{n} + \frac{{{\sigma ^2}_2}}{m}} ]
+  > \end{array}$
+  
+  > （2）$\sigma_1^2, \sigma_2^2$ 未知, 但 $\sigma_1^2=\sigma_2^2 = \sigma^2$，求 $u_1 - u_2$ 的置信区间
+  > $\begin{array}{l}
+  > \overline X  \sim N({u_1},\frac{{{\sigma ^2}_1}}{n}),\overline Y  \sim N({u_2},\frac{{{\sigma ^2}_2}}{m})\\
+  > U = \frac{{(\overline X  - \overline Y ) - ({u_1} - {u_2})}}{{\sqrt {\frac{1}{n} + \frac{1}{m}} \sigma }} \sim N(0,1)
+  > \end{array}$
+  > $\begin{array}{l}
+  > \frac{{(n - 1){S^2}_1}}{{{\sigma ^2}}} \sim {\chi ^2}(n - 1)\\
+  > \frac{{(m - 1){S^2}_2}}{{{\sigma ^2}}} \sim {\chi ^2}(m - 1)\\
+  > V = \frac{{(n - 1){S^2}_1}}{{{\sigma ^2}}} + \frac{{(m - 1){S^2}_2}}{{{\sigma ^2}}} \sim {\chi ^2}(n + m - 2)
+  > \end{array}$
+  > $T = \frac{U}{{\sqrt {\frac{V}{{n + m - 2}}} }} = \frac{{\frac{{(\overline X  - \overline Y ) - ({u_1} - {u_2})}}{{\sqrt {\frac{1}{n} + \frac{1}{m}} \sigma }}}}{{\sqrt {\frac{{\frac{{(n - 1){S^2}_1}}{{{\sigma ^2}}} + \frac{{(m - 1){S^2}_2}}{{{\sigma ^2}}}}}{{n + m - 2}}} }} = \frac{{(\overline X  - \overline Y ) - ({u_1} - {u_2})}}{{\sqrt {\frac{1}{n} + \frac{1}{m}} \sqrt {\frac{{(n - 1){S^2}_1 + (m - 1){S^2}_2}}{{n + m - 2}}} }} \sim t(n + m - 2)$
+  > $\begin{array}{l}
+  > P\{  - {t_{\frac{\alpha }{2}}} \le T \le {t_{\frac{\alpha }{2}}}\}  = 1 - \alpha \\
+  > (\overline X  - \overline Y ) \pm {t_{\frac{\alpha }{2}}}\sqrt {\frac{1}{n} + \frac{1}{m}} \sqrt {\frac{{(n - 1){S^2}_1 + (m - 1){S^2}_2}}{{n + m - 2}}} 
+  > \end{array}$
+  
+  > （3）$\sigma_1^2, \sigma_2^2$ 未知, 但 n,m > 50，求 $u_1 - u_2$ 的置信区间
+  > $\begin{array}{l}
+  > \overline X  \sim N({u_1},\frac{{{\sigma ^2}_1}}{n}),\overline Y  \sim N({u_2},\frac{{{\sigma ^2}_2}}{m})\\
+  > \frac{{{\sigma ^2}_1}}{n} + \frac{{{\sigma ^2}_2}}{m} \approx \frac{{{S^2}_1}}{n} + \frac{{{S^2}_2}}{m}\\
+  > U = \frac{{(\overline X  - \overline Y ) - ({u_1} - {u_2})}}{{\sqrt {\frac{{{S^2}_1}}{n} + \frac{{{S^2}_2}}{m}} }} \sim N(0,1)\\
+  > (\overline X  - \overline Y ) \pm {z_{\frac{\alpha }{2}}}\sqrt {\frac{{{S^2}_1}}{n} + \frac{{{S^2}_2}}{m}} 
+  > \end{array}$
+  
+  > （4） $u_1,u_2$ 已知，求方差比 $\frac {\sigma_1^2} {\sigma_2^2}$ 的置信区间
+  > $\begin{array}{l}
+  > F = \frac{{\frac{1}{n}\sum\limits_{i = 1}^n {\frac{{{{({X_i} - {u_1})}^2}}}{{{\sigma ^2}_1}}} }}{{\frac{1}{m}\sum\limits_{i = 1}^m {\frac{{{{({Y_i} - {u_2})}^2}}}{{{\sigma ^2}_2}}} }} = \frac{{\frac{m}{n}\frac{{\sum\limits_{i = 1}^n {{{({X_i} - {u_1})}^2}} }}{{\sum\limits_{i = 1}^m {{{({Y_i} - {u_2})}^2}} }}}}{{\frac{{{\sigma ^2}_1}}{{{\sigma ^2}_2}}}} \sim F(n,m)\\
+  > [\frac{{\frac{m}{n}\frac{{\sum\limits_{i = 1}^n {{{({X_i} - {u_1})}^2}} }}{{\sum\limits_{i = 1}^m {{{({Y_i} - {u_2})}^2}} }}}}{{{F_{\frac{\alpha }{2}}}(n,m)}},\frac{{\frac{m}{n}\frac{{\sum\limits_{i = 1}^n {{{({X_i} - {u_1})}^2}} }}{{\sum\limits_{i = 1}^m {{{({Y_i} - {u_2})}^2}} }}}}{{{F_{1 - \frac{\alpha }{2}}}(n,m)}}]
+  > \end{array}$
+  
+  > （5）$u_1,u_2$ 未知，求方差比 $\frac {\sigma_1^2} {\sigma_2^2}$ 的置信区间
+  > $\begin{array}{l}
+  > \frac{{(n - 1){S^2}_1}}{{{\sigma _1}^2}} \sim {\chi ^2}(n - 1)\\
+  > \frac{{(m - 1){S^2}_2}}{{{\sigma _2}^2}} \sim {\chi ^2}(m - 1)\\
+  > F = \frac{{\frac{{(n - 1){S^2}_1}}{{{\sigma _1}^2(n - 1)}}}}{{\frac{{(m - 1){S^2}_2}}{{{\sigma _2}^2(m - 1)}}}} = \frac{{\frac{{{S^2}_1}}{{{S^2}_2}}}}{{\frac{{{\sigma _1}^2}}{{{\sigma _2}^2}}}} \sim F(n - 1,m - 1)\\
+  > [\frac{{{S^2}_1}}{{{S^2}_2}}\frac{1}{{{F_{\frac{\alpha }{2}}}(n - 1,m - 1)}},\frac{{{S^2}_1}}{{{S^2}_2}}\frac{1}{{{F_{1 - \frac{\alpha }{2}}}(n - 1,m - 1)}}]
+  > \end{array}$
+
 ## 火车头数量估计问题
 
-# 假设试验
+# 假设检验
 
 # 方差分析
 
